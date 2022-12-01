@@ -1,20 +1,21 @@
-package edu.estu.petmates.user;
+package edu.estu.petmates.service.validation;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.estu.petmates.domain.entities.User;
+import edu.estu.petmates.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+@RequiredArgsConstructor
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
-    @Autowired
-    UserRepository userRepository;
+
+    private final UserRepository userRepository;
 
     @Override
     public boolean isValid(String username, ConstraintValidatorContext constraintValidatorContext) {
         User user = userRepository.findByUsername(username);
-        if (user != null){
-            return false;
-        }
-        return true;
+        return user == null;
     }
+
 }

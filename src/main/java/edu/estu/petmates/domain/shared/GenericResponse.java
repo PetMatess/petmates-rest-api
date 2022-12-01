@@ -1,4 +1,4 @@
-package edu.estu.petmates.shared;
+package edu.estu.petmates.domain.shared;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

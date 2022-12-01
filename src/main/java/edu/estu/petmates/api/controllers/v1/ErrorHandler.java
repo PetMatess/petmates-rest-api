@@ -1,5 +1,7 @@
-package edu.estu.petmates.error;
+package edu.estu.petmates.api.controllers.v1;
 
+import edu.estu.petmates.domain.response.ApiError;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
@@ -15,13 +17,13 @@ import java.util.Map;
 
 
 @RestController
+@RequiredArgsConstructor
 public class ErrorHandler implements ErrorController {
 
-    @Autowired
-    private ErrorAttributes errorAttributes;
+    private final ErrorAttributes errorAttributes;
 
     @RequestMapping("/error")
-     ApiError handleError(WebRequest webRequest){
+    ApiError handleError(WebRequest webRequest){
         Map<String, Object> attributes = this.errorAttributes.getErrorAttributes(webRequest, ErrorAttributeOptions.of(ErrorAttributeOptions.Include.MESSAGE, ErrorAttributeOptions.Include.BINDING_ERRORS));
         String message = (String) attributes.get("message");
         String path = (String) attributes.get("path");
@@ -38,10 +40,5 @@ public class ErrorHandler implements ErrorController {
          }
         return error;
     }
-
-    public String getErrorPath(){
-        return "/error";
-    }
-
 
 }

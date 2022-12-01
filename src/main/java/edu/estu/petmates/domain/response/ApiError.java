@@ -1,8 +1,8 @@
-package edu.estu.petmates.error;
+package edu.estu.petmates.domain.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
-import edu.estu.petmates.shared.Views;
+import edu.estu.petmates.domain.shared.Views;
 import lombok.Data;
 
 import java.util.Date;
