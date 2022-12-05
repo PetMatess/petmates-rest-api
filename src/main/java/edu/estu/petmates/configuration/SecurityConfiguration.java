@@ -38,8 +38,7 @@ public class SecurityConfiguration {
         http.httpBasic().authenticationEntryPoint(
                 new AuthEntryPoint() { // dönülecek olan response a header ekler.
         });
-
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/auth").permitAll()
+            http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/auth").permitAll()
                 .and()
                 .authorizeRequests().anyRequest().permitAll();
 

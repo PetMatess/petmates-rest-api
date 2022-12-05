@@ -29,7 +29,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getByUsername(username));
     }
 
-    @PostMapping("/api/users")
+    @PostMapping("/api/signup")
     public GenericResponse createUser(@Valid @RequestBody UserCreateRequest user) {
         userService.save(user);
         return new GenericResponse("user created");
